@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+    --bright:#00FFC6;
+    --primary:#e53c6c;
+    --secondary:#6E85B7;
+    --dark:#001e6c;
+    --textFont:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --headFont: 'Verdana', 'Geneva', 'Tahoma, sans-serif';
+    
+  }
+.array-container {
+  
+   
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .array-bar {
+    transition:  0.5s ease-in-out;
+    display: inline-block;
+    background-color:var(--primary);
+    margin: 0 1px;
+  }

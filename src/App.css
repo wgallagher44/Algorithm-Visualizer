@@ -1,0 +1,145 @@
+*{
+  box-sizing: border-box;
+  --bright:#00FFC6;
+  --primary:#e53c6c;
+  --secondary:#6E85B7;
+  --dark:#001e6c;
+  --textFont:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  --headFont: 'Verdana', 'Geneva', 'Tahoma, sans-serif';
+  
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--dark);
+}
+
+.header{
+  top:0;
+  align-items:center;
+  display: flex;
+  justify-content: space-evenly;
+  background-color:var(--primary);
+   color: var(--dark);
+}
+.header>h1{
+  font-size:30px;
+  font-family: var(--headFont);
+}
+.header>button{
+  all:unset;
+  cursor: pointer;
+  font-family: var(--textFont);
+}
+.header>button:hover{
+  color: var(--secondary);
+}
+.header-options{
+  background-color: transparent;
+  border:none;
+  font-family: var(--textFont);
+  color:var(--dark);
+  cursor: pointer;
+  
+}
+.header-info{
+  font-family: var(--textFont);
+  font-size: 20px;
+}
+
+.sortviz{
+   display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px; 
+  background-color:var(--primary);
+}
+.footer-container{
+  display:flex;
+  justify-content:space-between;
+  flex-direction: row;
+}
+.footer-slider{
+  margin-top:5px;
+  appearance: none;
+  -webkit-appearance: none;
+  
+  width:300px;
+  height:5px;
+  background:var(--bright);
+    border-radius: 5px;  
+    outline: none;
+    opacity: 0.7;
+   -webkit-transition: .2s;
+    transition: opacity .2s;
+
+  
+}
+.footer-slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; 
+  
+  background: var(--dark);
+  cursor: pointer;
+}
+.search{
+  display:flex;
+  color: var(--dark);
+  flex-direction: column;
+}
+.search-container{
+
+  margin: auto;
+  overflow: hidden;
+}
+.footer-val{
+  position: relative;
+  margin-right: 2rem;
+  font-family: var(--textFont);
+  color:var(--dark);
+}
+.footer-sort{
+  all:unset;
+  cursor: pointer;
+  font-family: var(--textFont);
+  color:var(--dark);
+}
+.footer-sort:hover{
+  color: var(--secondary);
+}
+.footer-link{
+  all:unset;
+  cursor: pointer;
+  font-family: var(--textFont);
+  color:var(--dark);
+}
+.footer-link:hover{
+  color: var(--secondary);
+}
+.footer2{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px; 
+  background-color:var(--primary);
+}
+.search-bar{
+  width : 2px;
+  display: inline-block;
+  background-color:var(--primary);
+  margin: 0 1px;
+}

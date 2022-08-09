@@ -16,7 +16,7 @@
   }
   
   .array-bar {
-    transition:  0.5s ease-in-out;
+
     display: inline-block;
     background-color:var(--primary);
     margin: 0 1px;

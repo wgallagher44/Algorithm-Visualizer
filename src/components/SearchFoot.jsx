@@ -15,6 +15,7 @@ export default function SearchHead(props){
     useEffect(() =>{
          bars.current =document.getElementById("search-array").children; 
         select.current = document.getElementById('select').addEventListener('change',function(e) {
+       
             setSelection(e.target.value);
           });
 

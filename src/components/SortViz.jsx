@@ -18,8 +18,10 @@ export default function Header(){
         let newArray = [];
         for(let i = 0; i < arrayBar.current.length;i++){
             const rand = randomInt(20,h/1.2);
+            
             newArray.push(rand);
             arrayBar.current[i].style.height = `${rand}px`
+            arrayBar.current[i].style.backgroundColor = '#e53c6c'
         }
         setArray(newArray);
         console.log(newArray)
@@ -52,7 +54,7 @@ export default function Header(){
     const spinner = () => {
         var list =  [];
         for(var i = 0; i < sortingList.length; i++){
-           list[i] =  <option value={sortingList[i]}>{sortingList[i]}</option>
+           list[i] =  <option value={i}>{sortingList[i]}</option>
         }
         return list;
     }
@@ -62,10 +64,10 @@ export default function Header(){
             <h1 className ="header-title">Sorting</h1>
             <button onClick = {randomBars} >Randomize</button>
             
-            <select className="header-options">
+            <select className="header-options" id = "sortSelection">
                 {spinner()}
             </select>
-            <h2 className ="header-info">About Method</h2>
+            
         </header>
         <Bars array = {array} /> 
         <Footer maxBars = {maxBars} array = {array} />

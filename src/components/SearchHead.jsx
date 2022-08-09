@@ -38,7 +38,7 @@ export default function SearchHead(props){
             {spinner()}
 
         </select>
-        <h2 className ="header-info">About Method</h2>
+        
     </header> 
     )
 

@@ -1,42 +1,45 @@
 
-export default  function bubbleSort(array:number[],styleArray:NodeListOf<HTMLElement>){
+export default async  function bubbleSort(array:number[],styleArray:NodeListOf<HTMLElement>){
     let isSorted;
-    const wait = (ms) =>{return new Promise((resolve) =>{setTimeout(resolve,ms)})}
-    // const swap = (el1,el2) =>{
-    //   return new Promise((resolve) => {
-    //     var container = document.getElementById('array');
-    //     // For exchanging styles of two blocks
-    //     var temp = el1.style.transform;
-    //     el1.style.transform = el2.style.transform;
-    //     el2.style.transform = temp;
-  
-    //     window.requestAnimationFrame(function() {
-  
-    //         // For waiting for .25 sec
-    //         setTimeout(() => {
-    //             container.insertBefore(el2, el1);
-    //             resolve(250);
-    //         }, 250);
-    //     });
-    // });
-     
+    const white = "#FFFFFF"
+    const original = '#e53c6c';
+    const green = "#00c717"
+    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
     for(let i = 0; i < array.length; i++){
         isSorted = true;
         for(let j = 1; j < array.length - i; j++){
+                let  second  = styleArray[j].style;
+                let first= styleArray[j-1].style;
+                first.backgroundColor = white;
+                second.backgroundColor = white;
             if(array[j] < array[j - 1]){
-                //swap(j,j-1,styleArray);
+               
                 let temp = array[j];
+
+                second.height = array[j-1] + "px"; 
                 array[j] = array[j-1];
+                first.height = temp + "px"
                 array[j-1] = temp;
                 isSorted = false;
-                //swap(j-1,j,styleArray);
-               
+                
+                
+             
             }
+                await wait(10);
+                first.backgroundColor = original;
+                second.backgroundColor = original;
+
           
         }
+            styleArray[array.length -i -1].style.backgroundColor=green;
           if(isSorted){
+                for(let i = 0; i< array.length - i;i++){
+                    styleArray[i].style.backgroundColor=green;
+                    await wait(20);
+                }
                 return array;
             }
     }
+    
     return array;
 }

@@ -13,8 +13,8 @@ export default function BarsSearch(props){
        
             {
             props.array.map((value,idx) =>(
-             <div className="array-bar" key={idx} id="search-bar"  style={{
-                width: '2px',
+             <div className="search-bar" key={idx} id="search-bar"  style={{
+               
                  height: `${value}px`
              }}></div>
             ))

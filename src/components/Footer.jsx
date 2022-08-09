@@ -2,38 +2,48 @@ import React from "react";
 import {useState,useRef,useEffect} from "react"
 import bubbleSort from "../Algorithm/BubbleSort.ts"
 import selectionSort from "../Algorithm/SelectionSort.ts"
+import mergeSort from "../Algorithm/MergeSort.ts"
 import { Link } from "react-router-dom";
 import quickSort from "../Algorithm/QuickSort.ts";
+
 export default function Footer(props){
     
-
+   
     var barArray = useRef(null);
     var divCollection = useRef(null);
+    const select = useRef(null);
+    const [selection,setSelection] = useState(0);
     useEffect(() =>{
         barArray.current =document.getElementById("array").children; 
         divCollection.current = document.getElementById("array")
+        select.current = document.getElementById('sortSelection').addEventListener('change',function(e) {
+            
+            setSelection(e.target.value);
+          });
     })
     var bars =Math.floor(props.maxBars)
- 
-   function swap(idx1, idx2) {
-        var container = divCollection.current;
-        // ditch text nodes and the like
-        var children = Array.prototype.filter.call(
-            container.childNodes,
-            function(node) {
-                return node.nodeType === 1;
+    const increaseWidth = (array,width) =>{
+        for(let i = 0; i < array.length; i++){
+            array[i].style.width = width + "px";
+        }
+
+
+    }
+    const sortMethodSelection = () =>{
+            console.log(selection)
+            if(selection == 0){
+               
+                bubbleSort(props.array,barArray.current)
+            }else if(selection == 1){
+                
+                selectionSort(props.array,barArray.current)
+            }else if(selection == 2){
+            quickSort(props.array,0,props.array.length-1,barArray.current);
+            }else if(selection == 3){
+            mergeSort(props.array,barArray.current)
             }
-        );
-        // get references to the relevant children
-        var el1 = children[idx1];
-        var el2 = children[idx2];
-        var el2next = children[idx2 + 1];
-    
-        // put the second element before the first
-        container.insertBefore(el2, el1);
-        // now put the first element where the second used to be
-        if (el2next) container.insertBefore(el1, el2next);
-        else container.appendChild(el1);
+
+
     }
     
     
@@ -45,11 +55,34 @@ export default function Footer(props){
     const moveSlide = (event) => {
         const tempVal = event.target.value
         const array = barArray.current;
-       
+        
         if(tempVal < val){
             for(let i = tempVal; i < array.length; i++){
-              array[i].parentNode.removeChild(array[i]); 
+              array[i].parentNode.removeChild(array[i]);
+              props.array.splice(i,1); 
             }
+            if(val > 500){
+                increaseWidth(array,1);
+            }
+            if(val < 470){
+                increaseWidth(array,2);
+            } if(val < 370){
+                increaseWidth(array,3);
+            }if(val < 300){
+                increaseWidth(array,4);
+            }if(val < 250){
+                increaseWidth(array,5);
+            }if(val < 200){
+                increaseWidth(array,6);
+            }if(val < 150){
+                increaseWidth(array,7);
+            }if(val < 100){
+                increaseWidth(array,9);
+            }if(val < 50){
+                increaseWidth(array,10);
+            }if(val < 30){
+                increaseWidth(array,18);
+            }              
         
         }else if(tempVal > val){
             console.log(h);
@@ -61,9 +94,31 @@ export default function Footer(props){
             newDiv.setAttribute.key =i; 
             newDiv.id = "array-bar";
             newDiv.style.height = random + "px";
-            newDiv.style.width = "1px";
+            if(val > 500){
+                increaseWidth(array,1);
+            }
+            if(val < 470){
+                increaseWidth(array,2);
+            } if(val < 370){
+                increaseWidth(array,3);
+            }if(val < 300){
+                increaseWidth(array,4);
+            }if(val < 250){
+                increaseWidth(array,5);
+            }if(val < 200){
+                increaseWidth(array,6);
+            }if(val < 150){
+                increaseWidth(array,7);
+            }if(val < 100){
+                increaseWidth(array,9);
+            }if(val < 50){
+                increaseWidth(array,10);
+            }if(val < 30){
+                increaseWidth(array,18);
+            }                     
+            
             newDiv.style.backgroundColor = "#e53c6c"
-           
+            props.array.push(random)
             divCollection.current.appendChild(newDiv);
           }
           
@@ -88,11 +143,8 @@ export default function Footer(props){
            
           
             </div>
-            <button className = "footer-sort" onClick={() =>{quickSort(props.array,
-                0,props.array.length-1)
-                console.log(props.array)
-                
-                
+            <button className = "footer-sort" onClick={() =>{
+                sortMethodSelection();
                 }}>Sort</button>
             
             <Link to ="/Searching" className = "footer-link">To Searching Visualizer</Link>

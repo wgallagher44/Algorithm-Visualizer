@@ -1,4 +1,4 @@
-export default async function linearSearch(target:Number,array:NodeListOf<HTMLElement>,numArray:number[]){
+export default async function linearSearch(target:Number,array:NodeListOf<HTMLElement>,numArray:number[],speed:number){
     const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
     const blue = "#5ab5f2"
     const green = "#00c717"
@@ -11,7 +11,7 @@ export default async function linearSearch(target:Number,array:NodeListOf<HTMLEl
         }else{
             array[i].style.backgroundColor = blue; 
         }
-        await wait(50);
+        await wait(speed);
     }
  
 }

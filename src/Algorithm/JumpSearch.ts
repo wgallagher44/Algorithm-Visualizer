@@ -1,4 +1,4 @@
-export default async function JumpSearch(target:number,styleArray:NodeListOf<HTMLElement>,array:number[]) {
+export default async function JumpSearch(target:number,styleArray:NodeListOf<HTMLElement>,array:number[],speed:number) {
         var length:number = array.length;
         var jump =  Math.floor(Math.sqrt(length));
         var prev = 0
@@ -9,7 +9,7 @@ export default async function JumpSearch(target:number,styleArray:NodeListOf<HTM
             prev = jump;
             jump +=Math.floor(Math.sqrt(length)); 
             styleArray[prev].style.backgroundColor = blue;
-           await wait(250)
+           await wait(speed)
         }
         if(target == length - 1){
             while(array[prev] < target){
@@ -21,7 +21,7 @@ export default async function JumpSearch(target:number,styleArray:NodeListOf<HTM
             }else{
                 styleArray[prev].style.backgroundColor = blue;
             }
-            await wait(100);
+            await wait(speed);
         }
         }else{
             while(array[jump] > target){
@@ -32,7 +32,7 @@ export default async function JumpSearch(target:number,styleArray:NodeListOf<HTM
                 }else{
                     styleArray[jump].style.backgroundColor = blue;
                 }
-                await wait(100);
+                await wait(speed);
             }
         }
         

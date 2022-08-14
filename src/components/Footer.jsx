@@ -6,7 +6,7 @@ import mergeSort from "../Algorithm/MergeSort.ts"
 import { Link } from "react-router-dom";
 import quickSort from "../Algorithm/QuickSort.ts";
 
-export default function Footer(props){
+export default  function Footer(props){
     
    
     var barArray = useRef(null);
@@ -17,9 +17,10 @@ export default function Footer(props){
         barArray.current =document.getElementById("array").children; 
         divCollection.current = document.getElementById("array")
         select.current = document.getElementById('sortSelection').addEventListener('change',function(e) {
-            
+
             setSelection(e.target.value);
           });
+         
     })
     var bars =Math.floor(props.maxBars)
     const increaseWidth = (array,width) =>{
@@ -29,18 +30,41 @@ export default function Footer(props){
 
 
     }
+    var speed = 35
+    const getRadioVal = () =>{
+        var radioButton = document.getElementsByName('speed');
+     
+        for(let i = 0; i< radioButton.length; i++){
+            if(radioButton[i].type = "radio"){
+              if(radioButton[i].checked){
+              
+                const newSpeed = Math.floor(speed/radioButton[i].value);
+                 console.log(newSpeed)
+                return newSpeed
+            }   
+            }
+           
+        }
+      
+       
+
+
+    }
     const sortMethodSelection = () =>{
-            console.log(selection)
+          
+             speed = getRadioVal()
             if(selection == 0){
-               
-                bubbleSort(props.array,barArray.current)
+    
+                bubbleSort(props.array,barArray.current,speed )
             }else if(selection == 1){
                 
-                selectionSort(props.array,barArray.current)
+                selectionSort(props.array,barArray.current,speed )
             }else if(selection == 2){
-            quickSort(props.array,0,props.array.length-1,barArray.current);
+            quickSort(props.array,0,props.array.length-1,barArray.current,speed );
             }else if(selection == 3){
-            mergeSort(props.array,barArray.current)
+                
+             mergeSort(props.array,barArray.current,speed );
+             
             }
 
 

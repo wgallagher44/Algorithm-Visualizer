@@ -74,7 +74,7 @@ function swap(arr, i, j,styleArray:NodeListOf<HTMLElement>) {
 }
   
 
-async function  partition(arr, low, high,styleArray:NodeListOf<HTMLElement>) {
+async function  partition(arr, low, high,styleArray:NodeListOf<HTMLElement>,speed:number) {
     let pivot = arr[high];
     const style = styleArray
     let i = (low - 1);
@@ -86,28 +86,28 @@ async function  partition(arr, low, high,styleArray:NodeListOf<HTMLElement>) {
            
             i++;
             swap(arr, i, j,style);
-            await wait(10);
+            await wait(speed);
         }
     }
     swap(arr, i + 1, high,style);
-    await wait(10);
+    await wait(speed);
     return (i + 1);
 }
 
   
 
-export default async function quickSort(arr, low, high,styleArray:NodeListOf<HTMLElement>) {
+export default async function quickSort(arr, low, high,styleArray:NodeListOf<HTMLElement>,speed:number) {
     const style = styleArray;
-
+    const newSpeed = speed
     
     if (low < high) {
   
     
-        let pi = await partition(arr, low, high,style);
+        let pi = await partition(arr, low, high,style,newSpeed);
   
        
-        quickSort(arr, low, pi - 1,style);
-        quickSort(arr, pi + 1, high,style);
+        quickSort(arr, low, pi - 1,style,newSpeed);
+        quickSort(arr, pi + 1, high,style,newSpeed);
     }
     
 

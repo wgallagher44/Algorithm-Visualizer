@@ -1,6 +1,7 @@
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-export default async function mergeSort(array:number[],styleArray:NodeListOf<HTMLElement>){
+ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+export default async function mergeSort(array:number[],styleArray:NodeListOf<HTMLElement>,speed:number){
     let n = array.length;
+    const newSpeed = speed
     const style = styleArray
     if(n < 2){
         return;
@@ -18,14 +19,14 @@ export default async function mergeSort(array:number[],styleArray:NodeListOf<HTM
     for(let i = mid; i < array.length; i++){
         rightHalf[i-mid] = array[i];
     }
-    await mergeSort(rightHalf,style);
-    await mergeSort(leftHalf,style);
+    await mergeSort(rightHalf,style,newSpeed);
+    await mergeSort(leftHalf,style,newSpeed);
  
-    await merge(array,leftHalf,rightHalf,style);
+    await merge(array,leftHalf,rightHalf,style,newSpeed);
     
 }
 
- async function merge(array:number[],leftHalf:number[],rightHalf:number[],styleArray:NodeListOf<HTMLElement>){
+ async function merge(array:number[],leftHalf:number[],rightHalf:number[],styleArray:NodeListOf<HTMLElement>,speed:number){
     let leftSize = leftHalf.length;
     let rightSize = rightHalf.length;
     var i=0,j=0,k=0;
@@ -43,20 +44,23 @@ export default async function mergeSort(array:number[],styleArray:NodeListOf<HTM
             j++;
         }
         k++
-        await wait(10);
+        await wait(speed);
     }
     while(i < leftSize){
         styleArray[k].style.height = leftHalf[i] + "px";
         array[k] = leftHalf[i];
         i++;
         k++;
-        await wait(10);
+        await wait(speed);
     }
     while(j < rightSize){
         styleArray[k].style.height = rightHalf[j] + "px";
         array[k] = rightHalf[j];
         j++;
         k++;
-        await wait(10);
+        await wait(speed);
     }
  }
+
+
+

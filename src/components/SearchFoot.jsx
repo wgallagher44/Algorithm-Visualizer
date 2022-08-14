@@ -25,7 +25,7 @@ export default function SearchHead(props){
   
    
    
-    const [val,setValue] = useState(0);
+    const [val,setValue] = useState(1);
     const moveSlide = (event) => {
         let val = event.target.value; 
         
@@ -38,20 +38,44 @@ export default function SearchHead(props){
             else arrayBar[i].style.backgroundColor = "#e53c6c"
         }       
         arrayBar[val -1].style.backgroundColor = "#e53c6c"
-        setValue(val )
+        setValue(val)
 
         
     }
+    var speed = 40;
+    const getRadioVal = () =>{
+        var radioButton = document.getElementsByName('speed');
+     
+        for(let i = 0; i< radioButton.length; i++){
+            if(radioButton[i].type = "radio"){
+              if(radioButton[i].checked){
+              
+                const newSpeed = Math.floor(speed/radioButton[i].value);
+                 console.log(newSpeed)
+                return newSpeed
+            }   
+            }
+           
+        }
+      
+       
+
+
+    }
+
+
+
      const searchMethod = () =>{
-        console.log(selection)
+       speed = getRadioVal();
+       console.log(speed);
         if(selection == 0 ){
-            linearSearch(val,bars.current,array);
+            linearSearch(val,bars.current,array,speed);
         }else if(selection ==1){
-            binarySearch(val,bars.current,array);
+            binarySearch(val,bars.current,array,speed);
         }else if(selection == 2){
-            jumpSearch(val,bars.current,array);
+            jumpSearch(val,bars.current,array,speed);
         }else if(selection == 3){
-            ternarySearch(val,bars.current,array);
+            ternarySearch(val,bars.current,array,speed);
         }
     }
    

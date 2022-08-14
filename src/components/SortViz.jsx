@@ -4,7 +4,7 @@ import Footer from "./Footer.jsx"
 import { useState,useRef,useEffect } from "react";
 export default function Header(){   
     var arrayBar = useRef(null);
-    
+    const [val,setVal] = useState(3);
     useEffect(() =>{
         arrayBar.current = document.getElementById('array').children;
     },[]);
@@ -36,8 +36,9 @@ export default function Header(){
     }
     return numberArray;
     }
-
+  
     const [array,setArray] = useState(newArray);
+   
     // let w = window.innerWidth - 40 ;
     // let maxBars = w / 3;
 
@@ -47,8 +48,6 @@ export default function Header(){
 
     // }
     // setArray(numberArray);
-
-
     var sortingList;
     sortingList  = ['Bubble Sort','Selection Sort','Quick Sort', 'Merge Sort']
     const spinner = () => {
@@ -67,7 +66,24 @@ export default function Header(){
             <select className="header-options" id = "sortSelection">
                 {spinner()}
             </select>
+            <div className="speed">
+            <div className="speed-text">Speed of Sort</div>
+            <input type="range" 
+            className="speed-slide" 
+            min="1"
+            max="4"
             
+            value={val}
+            step="1"
+            />
+            <span>{val}</span>
+
+
+            </div>
+           
+           
+
+           
         </header>
         <Bars array = {array} /> 
         <Footer maxBars = {maxBars} array = {array} />

@@ -1,4 +1,4 @@
-export default async function selectionSort(array:number[],styleArray:NodeListOf<HTMLElement>){
+export default async function selectionSort(array:number[],styleArray:NodeListOf<HTMLElement>,speed:number){
     const white = "#FFFFFF"
     const original = '#e53c6c';
     const green = "#00c717"
@@ -16,7 +16,7 @@ export default async function selectionSort(array:number[],styleArray:NodeListOf
                 minIdx = j;
                 
             }
-             await wait(10);
+             await wait(speed);
            if(j !== minIdx){
             styleArray[j].style.backgroundColor = original;
             }

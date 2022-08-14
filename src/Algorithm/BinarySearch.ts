@@ -1,4 +1,4 @@
-export default async function binarySearch(target:number,styleArray:NodeListOf<HTMLElement>,array:number[]){
+export default async function binarySearch(target:number,styleArray:NodeListOf<HTMLElement>,array:number[],speed:number){
     var left = 0
     var right = array.length - 1;
     const blue = "#5ab5f2"
@@ -36,7 +36,7 @@ export default async function binarySearch(target:number,styleArray:NodeListOf<H
             }
               
         }
-        await wait(1500);
+        await wait(speed);
         
     }
 

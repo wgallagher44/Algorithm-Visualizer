@@ -1,4 +1,4 @@
-export default async function ternarySearch(target:number,styleArray:NodeListOf<HTMLElement>,array:number[]){
+export default async function ternarySearch(target:number,styleArray:NodeListOf<HTMLElement>,array:number[],speed:number){
     var low = 0;
     var high = array.length-1;
     const blue = "#5ab5f2"
@@ -22,7 +22,7 @@ export default async function ternarySearch(target:number,styleArray:NodeListOf<
         }
         styleArray[mid1].style.backgroundColor = orange;
          styleArray[mid2].style.backgroundColor = orange;
-         await wait(1000)
+         await wait(speed)
         if(target < array[mid1]){
       
           styleArray[high].style.backgroundColor = blue;
@@ -44,7 +44,7 @@ export default async function ternarySearch(target:number,styleArray:NodeListOf<
             styleArray[low].style.backgroundColor = purple;
             styleArray[high].style.backgroundColor = purple;
         }
-      await wait(1500)
+      await wait(speed)
     }
 
 } 

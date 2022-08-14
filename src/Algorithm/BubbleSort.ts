@@ -1,5 +1,5 @@
 
-export default async  function bubbleSort(array:number[],styleArray:NodeListOf<HTMLElement>){
+export default async  function bubbleSort(array:number[],styleArray:NodeListOf<HTMLElement>,speed:number){
     let isSorted;
     const white = "#FFFFFF"
     const original = '#e53c6c';
@@ -25,7 +25,7 @@ export default async  function bubbleSort(array:number[],styleArray:NodeListOf<H
                 
              
             }
-                await wait(10);
+                await wait(speed);
                 first.backgroundColor = original;
                 second.backgroundColor = original;
 
@@ -35,7 +35,7 @@ export default async  function bubbleSort(array:number[],styleArray:NodeListOf<H
           if(isSorted){
                 for(let i = 0; i< array.length - i;i++){
                     styleArray[i].style.backgroundColor=green;
-                    await wait(20);
+                    await wait(speed);
                 }
                 return array;
             }
